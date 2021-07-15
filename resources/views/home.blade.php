@@ -62,38 +62,22 @@
                 margin-bottom: 30px;
             }
         </style>
+        <link rel="stylesheet" href="{{asset("/home.css")}}">
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
+        
 
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://vapor.laravel.com">Vapor</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
+        <div class="container">
+        <h1>{{$title}}</h1>
+            <div class="cards-container">
+                @foreach ($movies as $movie)
+                    <div class="card">
+                        <h2>{{$movie->title}}</h2>
+                        <h5>{{$movie->nationality}}</h5>
+                        <p>{{$movie->date}}</p>
+                        <h6>{{$movie->vote}}</h6>
+                    </div>
+                @endforeach
             </div>
         </div>
     </body>
